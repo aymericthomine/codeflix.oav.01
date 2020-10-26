@@ -5,14 +5,12 @@ let regex = /.*=.*/gm
 let found = fileContent.match(regex)
 let configFile = process.argv[2] + ".json"
 
-// CREATE A JSON FILE
 fs.open(configFile, 'w+', function (err, f) {
     if (err) {
         return console.error(err);
     }
 })
 
-// CONVERT JSON FORMAT
 fs.writeFile(configFile, JSON.stringify(found, null, '\t'), (err) => {
     if (err) throw err;
 })
